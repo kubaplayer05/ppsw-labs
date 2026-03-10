@@ -1,0 +1,54 @@
+# .gitignore for Keil uVision (ARM Keil) projects
+
+# Keil/ARM generated files
+*.axf
+*.elf
+*.hex
+*.bin
+*.srec
+*.out
+*.map
+*.lst
+*.sym
+
+# Object / intermediate files
+*.o
+*.obj
+*.d
+*.dep
+
+# Keil project/workspace/options (keep project sources if desired)
+*.uvproj
+*.uvprojx
+*.uvoptx
+*.uvmpw
+
+# Common Keil folders (adjust if your project keeps build folders in repo)
+Objects/
+Build/
+Output/
+Listings/
+RTE/
+TMP/
+__build__/
+
+# Backup / temp files
+*~
+~*
+*.bak
+*.tmp
+*.old
+
+# Editor/IDE metadata
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Logs
+*.log
