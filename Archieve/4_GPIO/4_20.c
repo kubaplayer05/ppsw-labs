@@ -12,7 +12,7 @@
 
 unsigned int auiLeds[] = {LED0_bm, LED1_bm, LED2_bm, LED3_bm};
 enum KeyboardState {RELEASED, BUTTON_0, BUTTON_1, BUTTON_2, BUTTON_3};
-enum Step {Left, Right};
+unsigned int uiLedIndeks = 0;
 
 void Delay(unsigned int uiMiliseconds) {
 	
@@ -57,27 +57,10 @@ void KeyboardInit(void) {
 	IO0DIR &= ~(BTN0_bm | BTN1_bm | BTN2_bm | BTN3_bm); 
 }
 
-void LedStep(enum Step eStep) {
-
-	static unsigned int uiLedIndeks = 0;
-
-	if (Left == eStep) {
-		uiLedIndeks = (uiLedIndeks + 1) % 4;
-	}
-
-	if (Right == eStep) {
-		uiLedIndeks = (uiLedIndeks + 3) % 4;
-	}
-
-	LedOn(uiLedIndeks);
-}
-
-void LedStepLeft(void) {
-	LedStep(Left);
-}
-
-void LedStepRight(void) {
-	LedStep(Right);
+void StepLeft(void) {
+	
+    uiLedIndeks = (uiLedIndeks + 1) % 4;
+    LedOn(uiLedIndeks);
 }
 
 int main() {
@@ -86,18 +69,8 @@ int main() {
 	KeyboardInit();
 
 	while(1) {
-		switch (eKeyboardRead()) {
-			case BUTTON_1:
-				Delay(250);
-				LedStepRight();
-				break;
-			case BUTTON_2:
-				Delay(250);
-				LedStepLeft();
-				break;
-			default:
-				break;
-		}
+		Delay(250);
+		StepLeft();
 	}
 
 	return 0;

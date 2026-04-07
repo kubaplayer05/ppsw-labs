@@ -1,7 +1,0 @@
---cpu ARM7TDMI
-".\startup.o"
-".\main.o"
---strict --scatter ".\Grzybek_4_2.sct"
---summary_stderr --info summarysizes --map --xref --callgraph --symbols
---info sizes --info totals --info unused --info veneers
---list ".\Grzybek_4_2.map" -o .\Grzybek_4_2.axf

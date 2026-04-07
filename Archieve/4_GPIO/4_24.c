@@ -72,14 +72,6 @@ void LedStep(enum Step eStep) {
 	LedOn(uiLedIndeks);
 }
 
-void LedStepLeft(void) {
-	LedStep(Left);
-}
-
-void LedStepRight(void) {
-	LedStep(Right);
-}
-
 int main() {
 	
 	LedInit();
@@ -89,11 +81,11 @@ int main() {
 		switch (eKeyboardRead()) {
 			case BUTTON_1:
 				Delay(250);
-				LedStepRight();
+				LedStep(Right);
 				break;
 			case BUTTON_2:
 				Delay(250);
-				LedStepLeft();
+				LedStep(Left);
 				break;
 			default:
 				break;

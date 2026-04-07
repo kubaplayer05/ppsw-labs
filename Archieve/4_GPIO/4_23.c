@@ -58,7 +58,7 @@ void KeyboardInit(void) {
 }
 
 void LedStep(enum Step eStep) {
-
+	
 	static unsigned int uiLedIndeks = 0;
 
 	if (Left == eStep) {
@@ -72,31 +72,22 @@ void LedStep(enum Step eStep) {
 	LedOn(uiLedIndeks);
 }
 
-void LedStepLeft(void) {
-	LedStep(Left);
-}
-
-void LedStepRight(void) {
-	LedStep(Right);
-}
-
 int main() {
+	
+	unsigned char ucStepCounter;
 	
 	LedInit();
 	KeyboardInit();
 
 	while(1) {
-		switch (eKeyboardRead()) {
-			case BUTTON_1:
-				Delay(250);
-				LedStepRight();
-				break;
-			case BUTTON_2:
-				Delay(250);
-				LedStepLeft();
-				break;
-			default:
-				break;
+		for (ucStepCounter = 0; ucStepCounter < 9; ucStepCounter++) {
+			Delay(250);
+			LedStep(Right);
+		}
+
+		for (ucStepCounter = 0; ucStepCounter < 9; ucStepCounter++) {
+			Delay(250);
+			LedStep(Left);
 		}
 	}
 
