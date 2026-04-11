@@ -6,7 +6,6 @@
 #define LED2_bm (1 << 18)
 #define LED3_bm (1 << 19)
 
-unsigned int auiLeds[] = {LED0_bm, LED1_bm, LED2_bm, LED3_bm};
 enum Step {Left, Right};
 
 void LedInit(void) {
@@ -19,8 +18,21 @@ void LedOn(unsigned char ucLedIndeks) {
 
 	IO1CLR = LED0_bm | LED1_bm | LED2_bm | LED3_bm;
 
-	if (ucLedIndeks < 4) {
-		IO1SET = auiLeds[ucLedIndeks];
+	switch (ucLedIndeks) {
+		case 0:
+			IO1SET = LED0_bm;
+			break;
+		case 1:
+			IO1SET = LED1_bm;
+			break;
+		case 2:
+			IO1SET = LED2_bm;
+			break;
+		case 3:
+			IO1SET = LED3_bm;
+			break;
+		default:
+			break;
 	}
 }
 
@@ -28,15 +40,15 @@ void LedStep(enum Step eStep) {
 
 	static unsigned int uiLedIndeks = 0;
 
-	if (Left == eStep) {
-		uiLedIndeks = (uiLedIndeks + 1) % 4;
+	switch (eStep) {
+		case Left:
+			uiLedIndeks = uiLedIndeks + 1;
+			break;
+		case Right:
+			uiLedIndeks = uiLedIndeks - 1;
 	}
 
-	if (Right == eStep) {
-		uiLedIndeks = (uiLedIndeks + 3) % 4;
-	}
-
-	LedOn(uiLedIndeks);
+	LedOn(uiLedIndeks % 4);
 }
 
 void LedStepLeft(void) {

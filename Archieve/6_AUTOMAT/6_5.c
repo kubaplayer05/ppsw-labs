@@ -9,8 +9,8 @@ void Delay(unsigned int uiMiliseconds) {
 	for(uiDelayCounter = 0; uiDelayCounter < uiLoopIterations; uiDelayCounter++) {};  
 }
 
-enum LedState{LED_STOP, LED_STEP_LEFT, LED_STEP_RIGHT};
-enum LedState eLedState = LED_STOP;
+enum LedState{LED_STOP, LED_STEP_RIGHT};
+enum LedState eLedState = LED_STEP_RIGHT;
 
 int main() {
 
@@ -21,26 +21,15 @@ int main() {
 		Delay(100);
 		switch (eLedState) {
 			case LED_STOP:
-				if (BUTTON_0 == eKeyboardRead()) {
-					eLedState = LED_STEP_LEFT;
-				} else if (BUTTON_2 == eKeyboardRead()) {
+				if (BUTTON_1 == eKeyboardRead()) {
 					eLedState = LED_STEP_RIGHT;
 				} else {
 					eLedState = LED_STOP;
 				}
 
 				break;
-			case LED_STEP_LEFT:
-				if (BUTTON_1 == eKeyboardRead()) {
-					eLedState = LED_STOP;
-				} else {
-					LedStepLeft();
-					eLedState = LED_STEP_LEFT;
-				}
-
-				break;
 			case LED_STEP_RIGHT:
-				if (BUTTON_1 == eKeyboardRead()) {
+				if (BUTTON_0 == eKeyboardRead()) {
 					eLedState = LED_STOP;
 				} else {
 					LedStepRight();
