@@ -60,10 +60,10 @@ int main() {
 	
 	LedInit();
 	KeyboardInit();
-	InitTimer0Match0(250000);
+	InitTimer0();
 
 	while(1) {
-		WaitOnTimer0Match0();
+		WaitOnTimer0(250000);
 		StepLeft();
 	}
 
