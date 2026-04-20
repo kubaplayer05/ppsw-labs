@@ -1,11 +1,11 @@
 #include "keyboard.h"
 #include "servo.h"
 
-int main (){
+int main () {
+	
 	unsigned int iMainLoopCtr;
 	
 	KeyboardInit();
-	DetectorInit();
 	ServoInit(50);
 
 	while(1){

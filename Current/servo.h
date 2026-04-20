@@ -1,8 +1,6 @@
 #ifndef SERVO
 #define SERVO
 
-void DetectorInit(void);
-
 void ServoCallib(void);
 
 void ServoInit(unsigned int uiServoFrequency);

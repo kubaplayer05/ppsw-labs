@@ -82,6 +82,7 @@ void ServoCallib(void) {
 void ServoInit(unsigned int uiServoFrequency) {
 
 	LedInit();
+	DetectorInit();
 	ServoCallib();
 	Timer0Interrupts_Init((1000000 / uiServoFrequency), &Automat);
 }
