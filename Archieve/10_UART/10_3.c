@@ -31,11 +31,15 @@ int main () {
 		switch (cOdebranyZnak) {
 			case 'c':
 				ServoCallib();
-				cOdebranyZnak = '\0';
 				break;
 			case '1':
-				ServoGoTo(uiServoGetCurrentPosition() + 12);
-				cOdebranyZnak = '\0';
+				ServoGoTo(12);
+				break;
+			case '2':
+				ServoGoTo(24);
+				break;
+			case '3':
+				ServoGoTo(36);
 				break;
 		}
 	}

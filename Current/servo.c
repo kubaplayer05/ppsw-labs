@@ -14,8 +14,8 @@ struct Servo {
 	unsigned int uiDesiredPosition;
 }; 
 
-struct Servo sServo;
 
+struct Servo sServo;
 
 void DetectorInit(void) {
 
@@ -90,4 +90,8 @@ void ServoInit(unsigned int uiServoFrequency) {
 void ServoGoTo(unsigned int uiPosition) {
 
 	sServo.uiDesiredPosition = uiPosition;
+}
+
+unsigned int uiServoGetCurrentPosition(void) {
+    return sServo.uiCurrentPosition;
 }
