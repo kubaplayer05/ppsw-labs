@@ -6,10 +6,10 @@
 #define NULL '\0'
 #define MAX_TOKEN_NR 2
 #define MAX_KEYWORD_STRING_LTH 10
-#define MAX_KEYWORD_NR 2
+#define MAX_KEYWORD_NR 3
 
 enum TokenType { KEYWORD, NUMBER, STRING };
-enum KeywordCode { CLB, GT };
+enum KeywordCode { CLB, GT, CLC };
 
 union TokenValue {
     enum KeywordCode eKeyword; 

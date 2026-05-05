@@ -6,6 +6,7 @@ enum State { TOKEN, DELIMITER };
 struct Keyword asKeywordList[MAX_KEYWORD_NR] = {
 {CLB, "callib"},
 {GT, "goto" },
+{CLC, "calc"}
 };
 
 struct Token asToken[MAX_TOKEN_NR];
