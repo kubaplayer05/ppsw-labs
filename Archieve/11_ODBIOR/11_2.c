@@ -1,9 +1,9 @@
 #include "keyboard.h"
 #include "servo.h"
 #include "uart.h"
-#include "command_decoder.h"
+#include "lancuchy.h"
 
-#define RECIEVER_SIZE 12
+#define RECIEVER_SIZE 7
 
 int main () {
     
@@ -31,19 +31,13 @@ int main () {
 
 		if(READY == eReciever_GetStatus()) {
 			Reciever_GetStringCopy(cRecievedString);
-			DecodeMsg(cRecievedString);
 
-			if((0 < ucTokenNr) && (KEYWORD == asToken[0].eType)) {
-
-				switch (asToken[0].uValue.eKeyword) {
-					case CLB:
-						ServoCallib();
-						break;
-					
-					case GT:
-						ServoGoTo(asToken[1].uValue.uiNumber);
-						break;
-				}
+			if(EQUAL == eCompareString(cRecievedString, "callib")) {
+				ServoCallib();
+			} else if(EQUAL == eCompareString(cRecievedString, "left")) {
+				ServoGoTo(50);
+			} else if(EQUAL == eCompareString(cRecievedString, "right")) {
+				ServoGoTo(150);
 			}
 		}
 	}
